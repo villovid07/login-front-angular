@@ -18,15 +18,24 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutSinComponent } from './containers/layout-sin/layout-sin.component';
 import { P404Component } from './pages/p404/p404.component';
-import { FlexLayoutModule } from "@angular/flex-layout";
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 @NgModule({
-  declarations: [AppComponent, LayoutComponentComponent, LoginComponent, RegisterComponent, LayoutSinComponent, P404Component],
+  declarations: [
+    AppComponent,
+    LayoutComponentComponent,
+    LoginComponent,
+    RegisterComponent,
+    LayoutSinComponent,
+    P404Component,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -45,10 +54,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MatTooltipModule,
     MatIconModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    MatSnackBarModule,
+    MatProgressBarModule,
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AppModule {}

@@ -1,8 +1,13 @@
-.show-pwd-icon{
-    cursor: pointer;
+.show-pwd-icon {
+  cursor: pointer;
 }
 
-.text-registro{
-    text-align: center;
-    margin-top: 5px;
+.text-registro {
+  text-align: center;
+  margin-top: 5px;
+}
+
+.progress-div {
+  height: auto;
+  width: auto;
 }

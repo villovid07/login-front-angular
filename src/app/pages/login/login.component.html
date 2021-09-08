@@ -7,6 +7,17 @@
 </mat-toolbar>
 
 
+<section class="example-section" *ngIf="cargando">
+    <mat-progress-bar
+        class="example-margin"
+        color="primary"
+        mode="indeterminate"
+        value="50"
+        bufferValue="75">
+    </mat-progress-bar>
+</section>
+
+
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
 
     <mat-card class="box">

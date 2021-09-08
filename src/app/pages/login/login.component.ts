@@ -1,23 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  styleUrls: ['./login.component.css'],
 })
 export class LoginComponent implements OnInit {
-
   frmLogin: FormGroup;
   hide = true;
+  cargando = true;
 
-  constructor(
-   private fb: FormBuilder
-  ){
-
+  constructor(private fb: FormBuilder, private _snackBar: MatSnackBar) {
     this.frmLogin = this.fb.group({
-        username: ["", Validators.required],
-        password: ["", Validators.required],
+      username: ['', Validators.required],
+      password: ['', Validators.required],
     });
   }
 
@@ -26,17 +29,14 @@ export class LoginComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log("iniciado");
+    console.log('iniciado');
   }
 
-
-  onSubmit(){
-    if(this.frmLogin.valid){
-
-    } else{
-
+  onSubmit() {
+    if (this.frmLogin.valid) {
+      this.cargando = true;
     }
-    
   }
-
 }
+
+//this._snackBar.open('Se ha presentado un error ', 'sisa ');
