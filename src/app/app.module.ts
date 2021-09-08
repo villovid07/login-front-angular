@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -18,6 +18,11 @@ import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { LayoutSinComponent } from './containers/layout-sin/layout-sin.component';
 import { P404Component } from './pages/p404/p404.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponentComponent, LoginComponent, RegisterComponent, LayoutSinComponent, P404Component],
@@ -33,8 +38,14 @@ import { P404Component } from './pages/p404/p404.component';
     MatInputModule,
     MatRadioModule,
     MatSelectModule,
+    FlexLayoutModule,
+    MatButtonModule,
+    MatCardModule,
+    MatTooltipModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}

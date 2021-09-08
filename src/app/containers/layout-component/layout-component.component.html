@@ -1,7 +1,10 @@
 <mat-sidenav-container class="container">
     <!-- side-nav -->
     <mat-sidenav mode="side" opened class="sidenav">
-      <mat-toolbar class="toolbar">D55</mat-toolbar>
+      <mat-toolbar color="primary" class="toolbar">
+        <img class="img-brand" alt="no-img" src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/cf/Angular_full_color_logo.svg/512px-Angular_full_color_logo.svg.png">
+
+      </mat-toolbar>
       <!-- Elements list menu -->
       <mat-list>
         <mat-list-item *ngFor="let item of links"> 
@@ -11,10 +14,21 @@
     </mat-sidenav>
     <!-- side-nav-content -->
     <mat-sidenav-content>
-      <mat-toolbar class="toolbar">
-        <mat-toolbar-row>
+      <mat-toolbar color="primary">
+       
           <span>Bienvenido</span>
-        </mat-toolbar-row>
+          <span class="example-spacer"></span>
+          <span class="nav-tool-items">
+
+            <button mat-icon-button class="example-icon favorite-icon" matTooltip="Cerrar sesión">
+              <mat-icon>power_settings_new</mat-icon>
+            </button>
+
+            <button mat-icon-button class="example-icon favorite-icon"  matTooltip="Perfil">
+              <mat-icon>account_circle</mat-icon>
+            </button>
+          </span>
+        
       </mat-toolbar>
       <div class="container-page">
         <router-outlet></router-outlet>
