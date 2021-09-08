@@ -23,6 +23,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatIconModule } from '@angular/material/icon';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [AppComponent, LayoutComponentComponent, LoginComponent, RegisterComponent, LayoutSinComponent, P404Component],
@@ -43,6 +44,8 @@ import { MatIconModule } from '@angular/material/icon';
     MatCardModule,
     MatTooltipModule,
     MatIconModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],

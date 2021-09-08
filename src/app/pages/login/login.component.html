@@ -14,17 +14,32 @@
             <mat-card-title>Iniciar Sesión</mat-card-title>
         </mat-card-header>
 
-        <form class="example-form">
+        <form class="example-form" [formGroup]="frmLogin" (ngSubmit)="onSubmit()">
             <mat-card-content>
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Username">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Username</mat-label>
+                    <input matInput formControlName="username">
+                    <mat-error *ngIf="frmLogin.get('password').hasError('required')">
+                        Nombre de usuario es requerido
+                    </mat-error>
                 </mat-form-field>
 
-                <mat-form-field class="example-full-width">
-                    <input matInput placeholder="Password">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password">
+                    <span class="show-pwd-icon" href="#" onClick="return false;" matSuffix (click)="hide = !hide"
+                        [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                        <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </span>
+                    <mat-error *ngIf="frmLogin.get('password').hasError('required')">
+                        Contraseña es requerida
+                    </mat-error>
                 </mat-form-field>
             </mat-card-content>
             <button mat-stroked-button color="accent" class="btn-block">Ingresar</button>
+            <div class="col-sm-12 text-registro">
+                <a href="/register" color="primary">Soy nuevo, quiero registrarme</a>
+            </div>
         </form>
     </mat-card>
 
