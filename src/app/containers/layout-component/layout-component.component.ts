@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 
 @Component({
   selector: 'app-layout-component',
@@ -8,21 +10,27 @@ import { Component, OnInit } from '@angular/core';
 export class LayoutComponentComponent implements OnInit {
   links = [
     {
-      name: 'Inicio',
-      url: '',
+      name: 'Administrar usuarios',
+      url: '/app/administrador/usuarios',
     },
     {
-      name: 'Lista',
-      url: 'list',
-    },
-    {
-      name: 'Formulario',
-      url: 'form',
-    },
+      name: 'Administrar complejidad',
+      url: '/app/administrador/complejidad',
+    }
   ];
   title = 'angular-material-example';
 
-  constructor() {}
+  constructor(private _authService: AuthService, private _router:Router) {
 
-  ngOnInit(): void {}
+  }
+
+  ngOnInit(): void {
+    //iniciar pantalla
+  }
+
+  cerrarSesion(): void{
+    this._authService.cerrarSesion();
+    this._router.navigate(["/login"]);
+  }
+
 }

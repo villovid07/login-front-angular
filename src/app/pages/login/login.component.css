@@ -11,3 +11,7 @@
   height: auto;
   width: auto;
 }
+
+*, ::after, ::before {
+  box-sizing: content-box !important;
+}

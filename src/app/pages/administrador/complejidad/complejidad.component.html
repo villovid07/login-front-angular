@@ -1,0 +1,171 @@
+<section class="example-section" *ngIf="cargando">
+    <mat-progress-bar
+        class="example-margin"
+        color="primary"
+        mode="indeterminate"
+        value="50"
+        bufferValue="75">
+    </mat-progress-bar>
+</section>
+
+<h2>Gestión Complejidad</h2>
+
+<p>Seleccione el nivel de complejidad a editar:</p>
+<form>
+  <mat-form-field>
+    <mat-select
+      [(ngModel)]="complejidadSel"
+      [ngModelOptions]="{ standalone: true }"
+      (ngModelChange)="cambiar($event)"
+    >
+      <mat-option [value]="">Seleccione</mat-option>
+      <mat-option
+        [value]="comp.id_complejidad"
+        *ngFor="let comp of lstComplejidades"
+        >{{ comp.nombre_complejidad }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</form>
+
+<mat-card>
+  <form [formGroup]="formComplejidad" (ngSubmit)="actualizar()" >
+    <mat-card-header color="primary">
+      <mat-card-title>Detalles complejidad</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Longitud minima</mat-label>
+                    <input matInput formControlName="longitud_minima">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Control reutilizacion</mat-label>
+                    <mat-select formControlName="ctrl_reutilizacion">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Factor reutilizacion</mat-label>
+                    <input matInput formControlName="factor_reutilizacion" >
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Control similitud</mat-label>
+                    <mat-select formControlName="ctrl_similitud">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Factor similitud</mat-label>
+                    <input matInput formControlName="factor_similitud">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Control caracteres</mat-label>
+                    <mat-select formControlName="ctrl_caracteres">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Requiere mayusculas</mat-label>
+                    <mat-select formControlName="requiere_mayus">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Requiere minusculas</mat-label>
+                    <mat-select formControlName="requiere_minusculas">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Requiere numeros</mat-label>
+                    <mat-select formControlName="requiere_numeros">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Requiere caracteres especiales</mat-label>
+                    <mat-select formControlName="requiere_especiales">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Control vencimiento</mat-label>
+                    <mat-select formControlName="control_vencimiento">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Factor vencimiento</mat-label>
+                    <input matInput formControlName="factor_vencimiento">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Control reintentos fallidos</mat-label>
+                    <mat-select formControlName="ctrl_reintentos_fallidos">
+                        <mat-option value="S" >SI</mat-option>
+                        <mat-option value="N" >NO</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Factor reintentos fallidos</mat-label>
+                    <input matInput formControlName="factor_reintentos_fallidos">
+                </mat-form-field>
+            </div>
+            <div class="col-sm-3">
+                <mat-form-field class="example-full-width" appearance="outline">
+                    <mat-label>Factor bloqueo</mat-label>
+                    <input matInput formControlName="factor_bloqueo">
+                </mat-form-field>
+            </div>
+          </div>
+          <div class="row">
+              <div class="col-sm-12">
+                <button mat-raised-button color="primary" type="submit" [disabled]="!formComplejidad.valid">
+                    <mat-icon>edit</mat-icon> Guardar
+                </button> 
+                &nbsp;
+                <button mat-raised-button color="warn" (click)="reiniciar()" type="button">
+                    <mat-icon>clear</mat-icon> Reiniciar
+                </button> 
+              </div>
+          </div>
+      </div>
+    </mat-card-content>
+  </form>
+</mat-card>

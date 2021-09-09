@@ -7,6 +7,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/services/auth.service';
 import { GeneroService } from 'src/app/shared/services/genero.service';
 
 @Component({
@@ -17,12 +19,15 @@ import { GeneroService } from 'src/app/shared/services/genero.service';
 export class RegisterComponent implements OnInit {
   frmRegister: FormGroup;
   lstGeneros: Array<any>;
-  cargando: boolean = true;
+  cargando: boolean = false;
+  hide:boolean=true;
 
   constructor(
     fb: FormBuilder,
     private _snackBar: MatSnackBar,
-    private _generoService: GeneroService
+    private _generoService: GeneroService,
+    private _authService: AuthService,
+    private _router:Router
   ) {
     this.lstGeneros = _generoService.darLstGeneros();
     this.frmRegister = fb.group(
@@ -34,7 +39,7 @@ export class RegisterComponent implements OnInit {
           '',
           [
             Validators.required,
-            Validators.pattern('^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}$'),
+            Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
           ],
         ],
         genero: ['', Validators.required],
@@ -58,13 +63,44 @@ export class RegisterComponent implements OnInit {
     else this.repetir_passwd.setErrors(null);
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    //iniciar
+  }
 
   get f() {
     return this.frmRegister.controls;
   }
 
-  registrar() {}
+  async registrar() {
+
+    if(this.frmRegister.valid){
+      try {
+        this.cargando=true;
+        let valor = this.frmRegister.value;
+        let usuario ={
+            nombre: valor.nombre,
+            apellido: valor.apellido,
+            genero:valor.genero,
+            correo:valor.email,
+            username: valor.username,
+            contrasenia: valor.passwd
+        }; 
+
+        let registrar = await this._authService.registrarUsuario(usuario).toPromise();
+        this.cargando=false;
+        this._snackBar.open(registrar.mensaje, 'cerrar',{
+          duration: 5000
+        });
+        this._router.navigate(["/login"]);
+      } catch (error) {
+        this.cargando=false;
+        this._snackBar.open(error.error.mensaje, 'cerrar',{
+          duration: 5000
+        });
+      }
+    }
+    
+  }
 }
 
 /**

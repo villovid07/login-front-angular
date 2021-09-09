@@ -1,4 +1,4 @@
-<mat-sidenav-container class="container">
+<mat-sidenav-container class="container-fluid">
     <!-- side-nav -->
     <mat-sidenav mode="side" opened class="sidenav">
       <mat-toolbar color="primary" class="toolbar">
@@ -20,7 +20,7 @@
           <span class="example-spacer"></span>
           <span class="nav-tool-items">
 
-            <button mat-icon-button class="example-icon favorite-icon" matTooltip="Cerrar sesión">
+            <button mat-icon-button class="example-icon favorite-icon" matTooltip="Cerrar sesión" (click)="cerrarSesion()">
               <mat-icon>power_settings_new</mat-icon>
             </button>
 
