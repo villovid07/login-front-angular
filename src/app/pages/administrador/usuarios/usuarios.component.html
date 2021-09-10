@@ -1,1 +1,41 @@
+<section class="example-section" *ngIf="cargando">
+    <mat-progress-bar
+        class="example-margin"
+        color="primary"
+        mode="indeterminate"
+        value="50"
+        bufferValue="75">
+    </mat-progress-bar>
+</section>
+
 <h2>Gestion usuarios</h2>
+<div class="row">
+    <div class="col-sm-12">
+    
+        <table class="table table-striped table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Username</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Genero</th>
+                <th scope="col">Perfil</th>
+                <th scope="col">Complejidad</th>
+                <th scope="col">Opciones</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor=" let item of lstUsuario">
+                <td>{{item.nombre}}</td>
+                <td>{{item.username}}</td>
+                <td>{{item.correo}}</td>
+                <td>{{item.genero}}</td>
+                <td>{{item.perfil}}</td>
+                <td>{{item.complejidad}}</td>
+                <td><span matTooltip="Editar"><mat-icon (click)="editar(item)" class="icono-editar"  >edit</mat-icon></span></td>
+              </tr>
+            </tbody>
+          </table>
+        
+    </div>
+</div>

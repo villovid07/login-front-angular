@@ -12,23 +12,26 @@
 
 <p>Seleccione el nivel de complejidad a editar:</p>
 <form>
-  <mat-form-field>
-    <mat-select
-      [(ngModel)]="complejidadSel"
-      [ngModelOptions]="{ standalone: true }"
-      (ngModelChange)="cambiar($event)"
-    >
-      <mat-option [value]="">Seleccione</mat-option>
-      <mat-option
-        [value]="comp.id_complejidad"
-        *ngFor="let comp of lstComplejidades"
-        >{{ comp.nombre_complejidad }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="row">
+      <div class="col-sm-6">
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Complejidad </mat-label>
+            <mat-select [(ngModel)]="complejidadSel" [ngModelOptions]="{ standalone: true }" (ngModelChange)="cambiar($event)" >
+              <mat-option [value]="">Seleccione</mat-option>
+              <mat-option
+                [value]="comp.id_complejidad"
+                *ngFor="let comp of lstComplejidades"
+                >{{ comp.nombre_complejidad }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+      </div>
+  </div>  
+
+  
 </form>
 
-<mat-card>
+<mat-card *ngIf="complejidadSel">
   <form [formGroup]="formComplejidad" (ngSubmit)="actualizar()" >
     <mat-card-header color="primary">
       <mat-card-title>Detalles complejidad</mat-card-title>
@@ -157,7 +160,7 @@
           <div class="row">
               <div class="col-sm-12">
                 <button mat-raised-button color="primary" type="submit" [disabled]="!formComplejidad.valid">
-                    <mat-icon>edit</mat-icon> Guardar
+                    <mat-icon>save</mat-icon> Guardar
                 </button> 
                 &nbsp;
                 <button mat-raised-button color="warn" (click)="reiniciar()" type="button">

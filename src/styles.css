@@ -121,10 +121,8 @@ body {
   display: block;
   align-content: center;
   align-items: center;
-  height: 60px;
+  height: 20px;
   z-index: 10;
-  position: fixed;
-  margin-top: 75px;
   width: 100%;
 }
 

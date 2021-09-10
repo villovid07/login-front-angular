@@ -1,0 +1,32 @@
+<h1 mat-dialog-title>Editar usuario {{data.nombre}}</h1>
+<form [formGroup]="formEditar" (ngSubmit)="actualizar()">
+  <div mat-dialog-content>
+    <p>Seleccione perfil y complejidad</p>
+    <mat-form-field appearance="outline">
+      <mat-label>Perfil</mat-label>
+      <mat-select formControlName="perfil">
+        <mat-option [value]="iperfil.id_perfil" *ngFor="let iperfil of lstPerfiles">{{iperfil.desc_perfil}}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    &nbsp;
+
+    <mat-form-field appearance="outline">
+      <mat-label>Complejidad</mat-label>
+      <mat-select formControlName="complejidad">
+        <mat-option [value]="icomp.id_complejidad" *ngFor="let icomp of lstComplejidades">{{icomp.nombre_complejidad}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <div class="col-sm-12 text-center">
+      <button mat-raised-button color="primary" type="submit">
+        <mat-icon>save</mat-icon> Guardar
+      </button>
+      <button mat-raised-button color="warn" type="button" (click)="onNoClick()">
+        <mat-icon>clear</mat-icon>Cancelar
+      </button>
+    </div>
+  </div>
+</form>

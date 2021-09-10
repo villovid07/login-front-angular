@@ -10,6 +10,10 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 export class LayoutComponentComponent implements OnInit {
   links = [
     {
+      name :'Inicio',
+      url:'/app/administrador'
+    },
+    {
       name: 'Administrar usuarios',
       url: '/app/administrador/usuarios',
     },
@@ -31,6 +35,10 @@ export class LayoutComponentComponent implements OnInit {
   cerrarSesion(): void{
     this._authService.cerrarSesion();
     this._router.navigate(["/login"]);
+  }
+
+  perfil():void{
+    this._router.navigate(["/perfil"]);
   }
 
 }

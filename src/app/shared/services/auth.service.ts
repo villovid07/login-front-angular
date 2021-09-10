@@ -72,5 +72,15 @@ export class AuthService {
         localStorage.removeItem("TOKEN");
     }
 
+    darPerfiles():Observable<any>{
+        let ruta = [this.ApiUrl, 'perfil'].join('/');
+        return this.http.get(ruta);
+    }
+
+    actualizarUsuario (data, id_usuario):Observable<any>{
+        let ruta = [this.ApiUrl, 'usuario', id_usuario].join('/');
+        return this.http.put(ruta, {"id_perfil": data.perfil,"id_complejidad":data.complejidad});
+    }
+
 
 }

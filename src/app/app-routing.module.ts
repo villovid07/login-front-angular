@@ -42,6 +42,14 @@ const routes: Routes = [
           ),
       },
     ],
+  },{
+    path:'perfil',
+    component: LayoutSinComponent,
+    canActivate:[AuthGuard],
+    data: {
+      role: [Role.Invitado, Role.Admin],
+    },
+    loadChildren: () =>import('./pages/perfil/perfil.module').then( (m) => m.PerfilModule),
   },
 
   {

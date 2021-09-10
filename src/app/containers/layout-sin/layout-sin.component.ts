@@ -24,4 +24,8 @@ export class LayoutSinComponent implements OnInit {
       this._router.navigate(["/login"]);
   }
 
+  perfil():void{
+    this._router.navigate(["/perfil"]);
+  }
+
 }

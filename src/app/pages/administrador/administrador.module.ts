@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DashAdministradorComponent } from './dash-administrador/dash-administrador.component';
 import { AdministradorRoutingModule } from './administrador.routing';
@@ -16,12 +16,16 @@ import { BrowserModule } from '@angular/platform-browser';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import {MatDialogModule} from '@angular/material/dialog';
+import { DialogUsuario } from './usuarios/dialog-usuario';
 
 @NgModule({
   declarations: [
     DashAdministradorComponent,
     ComplejidadComponent,
     UsuariosComponent,
+    DialogUsuario
   ],
   imports: [
     CommonModule,
@@ -36,8 +40,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     MatSelectModule,
     MatCardModule,
     MatButtonModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule,
+    MatDialogModule
 
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class AdministradorModule {}

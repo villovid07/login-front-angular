@@ -94,9 +94,7 @@ export class RegisterComponent implements OnInit {
         this._router.navigate(["/login"]);
       } catch (error) {
         this.cargando=false;
-        this._snackBar.open(error.error.mensaje, 'cerrar',{
-          duration: 5000
-        });
+        this._snackBar.open(error.error.mensaje, 'cerrar');
       }
     }
     
