@@ -41,6 +41,7 @@ export class LocalService {
         if(iUsu){
             iUsu.intentos =0;
         }
+        localStorage.setItem('intentos', JSON.stringify(arreglo));
     }
 
 }

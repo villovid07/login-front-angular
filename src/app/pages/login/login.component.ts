@@ -42,16 +42,23 @@ export class LoginComponent implements OnInit {
         this.cargando = true;
         let autenticado = await this._authService.login(this.frmLogin.value.username, this.frmLogin.value.password);
         console.log(autenticado);
+        this._localService.eliminarusuario(this.frmLogin.value.username);
         this._router.navigate([autenticado["pantalla"]]);
         this.cargando=false;
       } catch (error) {
 
         let mensaje="Error de autenticación";
         if(error.error){
-          if(error.error.complejidad){
-
+          if(error.error.bloqueado){
+            mensaje=error.error.mensaje;
+            this._localService.eliminarusuario(this.frmLogin.value.username);
+          }else if(error.error.complejidad){
             let reslocal = this._localService.modificarIntentos(this.frmLogin.value.username);
-            mensaje = await this.validarBloqueo(this.frmLogin.value.username, reslocal["intentos"], error.error.complejidad);
+            let resbloqueo = await this.validarBloqueo(this.frmLogin.value.username, reslocal["intentos"], error.error.complejidad);
+            mensaje = resbloqueo.mensaje;
+            if(resbloqueo.bloqueo){
+              this._localService.eliminarusuario(this.frmLogin.value.username);
+            }
           } else {
             mensaje=error.error.mensaje;
           }
@@ -68,15 +75,17 @@ export class LoginComponent implements OnInit {
   async validarBloqueo(username, intentos, complejidad){
 
     let mensaje= "";
+    let bloqueo= false;
     try {
       let bloqueo = await this._authService.validarBloqueo({"username": username, "id_complejidad": complejidad, "intentos":intentos}).toPromise();
       mensaje= bloqueo["mensaje"];
+      bloqueo= bloqueo["bloqueo"];
       
     } catch (error) {
       mensaje ="Error en el servidor";
     }
 
-    return mensaje;
+    return {"mensaje": mensaje, "bloqueo": bloqueo};
   }
 
 

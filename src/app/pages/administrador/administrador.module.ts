@@ -17,8 +17,9 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatTooltipModule } from '@angular/material/tooltip';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { DialogUsuario } from './usuarios/dialog-usuario';
+import { DigitOnlyModule } from '@uiowa/digit-only';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { DialogUsuario } from './usuarios/dialog-usuario';
     MatButtonModule,
     MatProgressBarModule,
     MatTooltipModule,
-    MatDialogModule
+    MatDialogModule,
+    DigitOnlyModule
 
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],

@@ -82,5 +82,10 @@ export class AuthService {
         return this.http.put(ruta, {"id_perfil": data.perfil,"id_complejidad":data.complejidad});
     }
 
+    actualizarContra ( contrasena ): Observable<any>{
+        let ruta = [this.ApiUrl, 'actualizar-contra'].join("/");
+        return this.http.post(ruta, { "contrasena":contrasena, "token": localStorage.getItem("TOKEN") });
+    }
+
 
 }
